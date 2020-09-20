@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/joao/CLionProjects/Calaga/jogo.h
+
+/home/joao/CLionProjects/Calaga/main.c
+ncurses.h
+-
+unistd.h
+-
+stdio.h
+-
+jogo.h
+/home/joao/CLionProjects/Calaga/jogo.h
+usuarios.h
+/home/joao/CLionProjects/Calaga/usuarios.h
+
+/home/joao/CLionProjects/Calaga/usuarios.h
+
