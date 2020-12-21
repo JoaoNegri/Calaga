@@ -1,17 +1,21 @@
+
 //
-// Created by joao on 14/09/2020.
+// Created by Kelvin on 14/09/2020.
 //
 
-#include "usuarios.h"
-#include "pontuacao.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
 int entrar_jogo=0;
 
 char userID[20];
 
+char ADUser[20];
+
 char NewUserID[20];
+
+int tipo_usuario;
 
 typedef struct {
 
@@ -26,16 +30,23 @@ User_Template tabela_usuarios[7] ={
 
 };
 
-void mostrar_pontuacao();
+void restaurar_tabela();
+
+void salvar_arquivo();
 
 static void cria_users1();
 
-void validar_user(){
+//static void alterar_senha();
+
+//static void desbloquear_usuario();
+
+int validar_user(){
 
     char pwd[20];
     int  UserIDFind=1;
     int i;
 
+    restaurar_tabela();
     for(i=0;i<7&& UserIDFind;i++){
 
         if(strcmp(userID,tabela_usuarios[i].UserID)==0){
@@ -50,7 +61,7 @@ void validar_user(){
 
         i--;
 
-        if(tabela_usuarios[i].contador<5){
+        while(tabela_usuarios[i].contador<3){
 
             printf("Entre com a sua senha,%s\n",userID);
             scanf("%s",pwd);
@@ -61,6 +72,22 @@ void validar_user(){
 
                 entrar_jogo=1;
 
+                if (strstr(userID, "admin") != NULL) {
+
+                    system("clear");
+
+                    printf("Admin logado\n");
+                    tipo_usuario=0;
+                    return 0;
+
+                }else{
+                    system("clear");
+
+                    printf("Usuário logado\n");
+                    tipo_usuario=1;
+                    return 0;
+
+                }
             } else{
 
                 printf("Senha Digitada incorretamente\n");
@@ -70,9 +97,11 @@ void validar_user(){
             }
 
 
-        } else{
+        } if (tabela_usuarios[i].contador ==3){
 
             printf("Usuário bloqueado, entre em contato com um admin\n");
+            salvar_arquivo();
+            return 0;
 
         }
 
@@ -100,8 +129,7 @@ void validar_user(){
 
     }
 
-};
-
+}
 
 int sistema_usuario(){
 
@@ -113,26 +141,26 @@ int sistema_usuario(){
         scanf("%s",userID);
 
         validar_user();
+
         if (entrar_jogo == 1)
             break;
     }
-
-};
+    return tipo_usuario;
+}
 
 void cria_users1(){
 
-    char Newpwd[20];
     int i;
-    char j[20];
-    int k;
     int tam;
     int x=0;
+    int codigo_user;
 
-    for(i=0;i<9;i++){
+
+    for(i=0;i<7;i++){
 
         tam= strlen(tabela_usuarios[i].UserID);
 
-        if(tam!=0){
+        if(tam!=1){
 
             x=x+1;
 
@@ -140,25 +168,196 @@ void cria_users1(){
 
 
 
-    };
+    }
 
     printf("--Criação de usuário--\n");
 
     printf("Entre com o nome do usuário que deseja criar\n");
     scanf("%s",tabela_usuarios[x].UserID);
 
+
     printf("Entre com a senha para, %s\n",tabela_usuarios[x].UserID);
     scanf("%s",tabela_usuarios[x].Senha);
 
-    tabela_usuarios[x].pontuacao=0;
-    tabela_usuarios[x].contador=0;
+    if (strstr(userID, "admin") != NULL) {
+
+        printf("Insira o código de validação de criação de admins:\n");
+        scanf("%d",&codigo_user);
+
+        if( codigo_user == 5){
+
+            printf("Código aceito , usuário criado\n");
+            tabela_usuarios[x].pontuacao=0;
+            tabela_usuarios[x].contador=0;
+
+
+        }else {
+            //printf("aaaaaa\n");
+            printf("Código incorreto, voltando para o menu\n");
+            strcpy(tabela_usuarios[x].UserID, "A");
+            strcpy(tabela_usuarios[x].Senha, "A" );
+        }
+
+    }else{
+
+        tabela_usuarios[x].pontuacao=0;
+        tabela_usuarios[x].contador=0;
+
+    }
+
 
     printf("Você será direcionado para página inicial do game\n");
 
-    system("clear");
 
+    salvar_arquivo();
     sistema_usuario();
 
-};
+}
 
-void mostrar_pontuacao();
+void alterar_senha(){
+
+    int  UserIDFind=1;
+    int k;
+
+    if (strstr(userID, "admin") != NULL) {
+
+        printf("Entre com o nome do usuário que deseja mudar a senha:\n");
+        scanf("%s",ADUser);
+
+
+        for(k=0;k<7&& UserIDFind;k++){
+
+            if(strcmp(ADUser,tabela_usuarios[k].UserID)==0){
+
+                UserIDFind=0;
+
+            }
+
+            if(UserIDFind==0){
+
+                printf("Entre com a nova senha do usuário:\n");
+                scanf("%s",tabela_usuarios[k].Senha);
+                salvar_arquivo();
+                system("clear");
+
+            }
+
+        }
+
+    }else{
+
+        printf("Alterando senha de %s\n",userID);
+
+        for(k=0;k<7&& UserIDFind;k++){
+
+            if(strcmp(userID,tabela_usuarios[k].UserID)==0){
+
+                UserIDFind=0;
+
+            }
+
+            if(UserIDFind==0){
+
+                printf("Entre com sua nova senha,%s\n",userID);
+                scanf("%s",tabela_usuarios[k].Senha);
+                salvar_arquivo();
+                system("clear");
+
+            }
+
+        }
+
+    }
+
+}
+
+void desbloquear_usuario(){
+
+    int  UserIDFind=1;
+    int k;
+
+    printf("Entre com o nome do usuário que deseja desbloquear:\n");
+    scanf("%s",ADUser);
+
+
+    for(k=0;k<7&& UserIDFind;k++){
+
+        if(strcmp(ADUser,tabela_usuarios[k].UserID)==0){
+
+            UserIDFind=0;
+
+        }
+
+        if(UserIDFind==0){
+
+            tabela_usuarios[k].contador=0;
+            salvar_arquivo();
+            printf("Usuário desbloquado\n");
+
+            system("clear");
+
+        }
+
+    }
+
+}
+
+void salvar_pontuacao(int pontos) {
+    int UserIDFind = 1;
+    for(int k=0;k<7&& UserIDFind;k++){
+
+        if(strcmp(userID,tabela_usuarios[k].UserID)==0){
+
+            UserIDFind=0;
+
+        }
+
+        if (UserIDFind == 0) {
+            if (tabela_usuarios[k].pontuacao<pontos) {
+                tabela_usuarios[k].pontuacao = pontos;
+                salvar_arquivo();
+            }
+        }
+    }
+}
+
+int mostrar_pontuacao() {
+
+    for (int k = 0; k < 7 ; k++) {
+
+        if (strcmp(userID, tabela_usuarios[k].UserID) == 0) {
+
+            return tabela_usuarios[k].pontuacao;
+
+        }
+
+    }
+}
+void salvar_arquivo(){
+    FILE *ptr;
+    int i;
+
+    if ((ptr = fopen("Usuarios.dat", "w+"))== NULL) {
+        printf("Erro na abertura de arquivo\n");
+        exit(-1);
+    }
+    for (i=0;i<7;i++)
+        fprintf (ptr, "%s:%s:%d:%f\n", tabela_usuarios[i].UserID, tabela_usuarios[i].Senha, tabela_usuarios[i].contador, tabela_usuarios[i].pontuacao);
+    fclose(ptr);
+}
+
+void restaurar_tabela(){
+
+    FILE *ptr;
+    int ret=0,i=0;
+
+    if ((ptr = fopen("Usuarios.dat", "r"))== NULL) {
+        printf("Erro na abertura de arquivo\n");
+        exit(-1);
+    }
+    while  (ret != EOF) {
+        ret = fscanf (ptr, " %[^:]:%[^:]:%d:%f", tabela_usuarios[i].UserID, tabela_usuarios[i].Senha, &tabela_usuarios[i].contador, &tabela_usuarios[i].pontuacao);
+        i++;
+    }
+    fclose(ptr);
+}

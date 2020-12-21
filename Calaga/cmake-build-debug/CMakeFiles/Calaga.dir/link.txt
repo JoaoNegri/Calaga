@@ -1,1 +1,1 @@
-/usr/bin/cc -g   CMakeFiles/Calaga.dir/main.c.o CMakeFiles/Calaga.dir/jogo.c.o CMakeFiles/Calaga.dir/usuarios.c.o CMakeFiles/Calaga.dir/pontuacao.c.o  -o Calaga  -lcurses /usr/lib/x86_64-linux-gnu/libform.so 
+/usr/bin/cc -g   CMakeFiles/Calaga.dir/main.c.o CMakeFiles/Calaga.dir/jogo.c.o CMakeFiles/Calaga.dir/usuarios.c.o  -o Calaga  -lcurses /usr/lib/x86_64-linux-gnu/libform.so 

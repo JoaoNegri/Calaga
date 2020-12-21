@@ -1,4 +1,12 @@
-/snap/clion/124/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/joao/CLionProjects/Calaga
+/opt/clion-2020.1.1/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/ana/CLionProjects/Calaga
+-- The C compiler identification is GNU 5.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Found Curses: /usr/lib/x86_64-linux-gnu/libcurses.so  
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/joao/CLionProjects/Calaga/cmake-build-debug
+-- Build files have been written to: /home/ana/CLionProjects/Calaga/cmake-build-debug

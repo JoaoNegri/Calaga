@@ -6,19 +6,33 @@
 
 #IncludeRegexTransform: 
 
-/home/joao/CLionProjects/Calaga/jogo.h
-
-/home/joao/CLionProjects/Calaga/main.c
+/home/ana/CLionProjects/Calaga/jogo.c
+jogo.h
+/home/ana/CLionProjects/Calaga/jogo.h
 ncurses.h
 -
 unistd.h
 -
-stdio.h
+
+/home/ana/CLionProjects/Calaga/jogo.h
+
+/home/ana/CLionProjects/Calaga/main.c
+ncurses.h
+-
+unistd.h
 -
 jogo.h
-/home/joao/CLionProjects/Calaga/jogo.h
+/home/ana/CLionProjects/Calaga/jogo.h
 usuarios.h
-/home/joao/CLionProjects/Calaga/usuarios.h
+/home/ana/CLionProjects/Calaga/usuarios.h
 
-/home/joao/CLionProjects/Calaga/usuarios.h
+/home/ana/CLionProjects/Calaga/usuarios.c
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+
+/home/ana/CLionProjects/Calaga/usuarios.h
 

@@ -4,10 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/joao/CLionProjects/Calaga/jogo.c" "/home/joao/CLionProjects/Calaga/cmake-build-debug/CMakeFiles/Calaga.dir/jogo.c.o"
-  "/home/joao/CLionProjects/Calaga/main.c" "/home/joao/CLionProjects/Calaga/cmake-build-debug/CMakeFiles/Calaga.dir/main.c.o"
-  "/home/joao/CLionProjects/Calaga/pontuacao.c" "/home/joao/CLionProjects/Calaga/cmake-build-debug/CMakeFiles/Calaga.dir/pontuacao.c.o"
-  "/home/joao/CLionProjects/Calaga/usuarios.c" "/home/joao/CLionProjects/Calaga/cmake-build-debug/CMakeFiles/Calaga.dir/usuarios.c.o"
+  "/home/ana/CLionProjects/Calaga/jogo.c" "/home/ana/CLionProjects/Calaga/cmake-build-debug/CMakeFiles/Calaga.dir/jogo.c.o"
+  "/home/ana/CLionProjects/Calaga/main.c" "/home/ana/CLionProjects/Calaga/cmake-build-debug/CMakeFiles/Calaga.dir/main.c.o"
+  "/home/ana/CLionProjects/Calaga/usuarios.c" "/home/ana/CLionProjects/Calaga/cmake-build-debug/CMakeFiles/Calaga.dir/usuarios.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

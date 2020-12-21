@@ -1,7 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Calaga.dir/jogo.c.o"
   "CMakeFiles/Calaga.dir/main.c.o"
-  "CMakeFiles/Calaga.dir/pontuacao.c.o"
   "CMakeFiles/Calaga.dir/usuarios.c.o"
   "Calaga"
   "Calaga.pdb"

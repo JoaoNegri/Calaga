@@ -4,5 +4,5 @@
 
 #ifndef CALAGA_JOGO_H
 #define CALAGA_JOGO_H
-int jogoo(int argc, char *argv[]);
+int jogoo();
 #endif //CALAGA_JOGO_H
